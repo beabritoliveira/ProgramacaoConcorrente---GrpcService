@@ -58,7 +58,7 @@ namespace GrpcService1.Services
                 PropertyNameCaseInsensitive = true
             });
 
-            //Pra converter o valor que é decimal na classe Carteira mas que é string no Proto
+            //Pra converter o valor que Ã© decimal na classe Carteira mas que Ã© string no Proto
             var moedasLeitura = listaDeMoedas.Select(m => new PostMoedaRequest
             {
                 Id = m.Id,
@@ -207,6 +207,24 @@ namespace GrpcService1.Services
             return new VisuSaldoResponse
             {
                 Messagem = responseBody
+            };
+        }
+        public override async Task<ResponseSimuacao> SimularCompraTransferencia(RequestSimulacao request, ServerCallContext context)
+        {
+            decimal.TryParse(request.Valor, out decimal valorDecimal);
+            var id_dt = request.IdDestino;
+            if (request.IdDestino == null | request.IdDestino == "")
+            {
+                id_dt = "nulo";
+            }
+            var cabecalho = "?id_origem=" +request.IdOrigem + "&id_destino=" + id_dt + "&valor=" +valorDecimal;
+            var url = "http://localhost:5202/api/Carteiras/simulacao" + cabecalho;
+            var response = await _httpClient.GetAsync(url);
+            string responseBody = await response.Content.ReadAsStringAsync();
+            Console.WriteLine(responseBody);
+            return new ResponseSimuacao
+            {
+                Mensagem = responseBody
             };
         }
 
