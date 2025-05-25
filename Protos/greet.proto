@@ -1,0 +1,86 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcService1";
+
+package greet;
+
+// The greeting service definition.
+service Greeter {
+  // Sends a greeting
+  rpc PostMoedas (PostMoedaRequest) returns (PostMoedaResponse);
+  rpc GetMoedas (Empty) returns (GetMoedasResponse);
+  rpc DeleteCarteira (DeleteCarteiraRequest) returns (DeleteCarteiraResponse);
+  rpc PostCarteira (PostCarteiraRequest) returns (PostCarteiraResponse);
+  rpc ComprarMoeda (ComprarRequest) returns (ComprarResponse);
+  rpc TransferirMoeda (TransfRequest) returns (TransfResponse);
+  rpc AtualizarValMoeda (ValMoedaRequest) returns (ValMoedaRepost);
+  rpc SaldoCarteira (VisuSaldoRequest) returns (VisuSaldoResponse);
+}
+
+message VisuSaldoResponse{
+	string messagem = 1;
+}
+message VisuSaldoRequest{
+	string id = 1;
+}
+
+message ValMoedaRepost{
+	string messagem = 1;
+}
+
+message ValMoedaRequest{
+	string valor = 1;
+	int32 id_moeda = 2;
+}
+
+message TransfRequest{
+	string id_origem = 1;
+	string id_destino = 2;
+	string valor = 3;
+}
+message TransfResponse {
+	string mensagem = 1;
+}
+
+message ComprarRequest{
+	string id_conta = 1;
+	string valor = 2;
+}
+
+message ComprarResponse{
+	string mensagem = 1;
+}
+
+message PostCarteiraRequest{
+	string numeroConta = 1;
+    int32 idMoeda = 2;
+    string codResponsavel = 3;
+    string nomeResponsavel = 4;
+    string qtdMoedas = 5;
+    string statusConta = 6;
+}
+
+message PostCarteiraResponse{
+	string message = 1;
+}
+
+message DeleteCarteiraResponse{
+	string message = 1;
+}
+message DeleteCarteiraRequest{
+	string id_carteira = 1;
+}
+
+message GetMoedasResponse {
+    repeated PostMoedaRequest moedas = 1; // Lista de moedas
+}
+
+message PostMoedaResponse{
+	string message = 1;
+}
+message PostMoedaRequest{
+	int32 id = 1;
+	string name = 2;
+	string valor = 3;
+}
+message Empty {}
