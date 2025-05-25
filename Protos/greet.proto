@@ -15,6 +15,15 @@ service Greeter {
   rpc TransferirMoeda (TransfRequest) returns (TransfResponse);
   rpc AtualizarValMoeda (ValMoedaRequest) returns (ValMoedaRepost);
   rpc SaldoCarteira (VisuSaldoRequest) returns (VisuSaldoResponse);
+  rpc SimularCompraTransferencia (RequestSimulacao) returns (ResponseSimuacao);
+}
+message RequestSimulacao{
+	string id_origem = 1;
+	string id_destino = 2;
+	string valor = 3;
+}
+message ResponseSimuacao{
+	string mensagem =1 ;
 }
 
 message VisuSaldoResponse{
