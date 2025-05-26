@@ -46,11 +46,11 @@ A arquitetura do sistema é dividida em **3 partes**:
 2. **Client** - Interface para o usuário final
 3. **GrpcService** - Serviço de comunicação remota
 
-# GrpcService
+### GrpcService
 
 Implementa um serviço **gRPC** chamado `GreeterService`, que interage com um sistema de criptomoedas. Ele usa um **cliente HTTP** para fazer chamadas a um **Web Service** que gerencia moedas e carteiras.
 
-## Visão Geral do Funcionamento
+#### Funcionamento
 
 O `GreeterService` é uma classe que herda de `Greeter.GreeterBase`, o que significa que ele **implementa os métodos definidos** no arquivo de especificação **Proto**. No geral, ele fornece funcionalidades para:
 
@@ -92,14 +92,14 @@ Cada um desses métodos **faz chamadas HTTP** para um serviço externo na **port
 
 ---
 
-## **Proto - Protocol Buffers (protobuf)**
+### **Proto - Protocol Buffers (protobuf)**
 
 A implementação usa **proto3**, uma linguagem de descrição de interfaces usada no **gRPC**. Ela define:
 
 - Um serviço chamado `Greeter`, que contém vários **métodos RPC (Remote Procedure Call)**.
 - **Mensagens** que representam **requisições e respostas** trocadas entre o **cliente gRPC** e o **servidor**.
 
-### **Definição do Serviço Greeter**
+#### **Definição do Serviço Greeter**
 
 Este serviço inclui métodos que permitem **inserir, consultar, atualizar, comprar e transferir moedas**, além de **gerenciar carteiras**. Cada método é um **RPC** que recebe um objeto de **requisição** e retorna um objeto de **resposta**.
 
