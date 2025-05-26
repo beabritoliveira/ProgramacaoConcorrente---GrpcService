@@ -45,6 +45,7 @@ A arquitetura do sistema é dividida em **3 partes**:
 1. **Controller** - Gerenciamento das requisições HTTP
 2. **Client** - Interface para o usuário final
 3. **GrpcService** - Serviço de comunicação remota
+![{E39E3767-DBCF-487E-A175-7749C9CCC6DA}](https://github.com/user-attachments/assets/869b5b84-da64-4852-a54b-c173863eab1a)
 
 ### GrpcService
 
