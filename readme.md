@@ -68,22 +68,22 @@ Cada um desses métodos **faz chamadas HTTP** para um serviço externo na **port
 
 ---
 
-## Explicação detalhada de alguns métodos
+### Explicação detalhada de alguns métodos
 
-### `PostMoedas(PostMoedaRequest request, ServerCallContext context)`
+#### `PostMoedas(PostMoedaRequest request, ServerCallContext context)`
 
 - Recebe um **ID**, **Nome** e **Valor** de uma moeda.
 - Envia para o **Web Service** (`/api/MoedasCB`) via uma requisição HTTP **POST**.
 - Converte o **valor** para um formato decimal antes de enviar.
 - Exibe os dados no console.
 
-### `GetMoedas(Empty empty, ServerCallContext context)`
+#### `GetMoedas(Empty empty, ServerCallContext context)`
 
 - Consulta a lista de **moedas existentes** no Web Service (`/api/MoedasCB`) via **GET**.
 - Converte os dados recebidos para uma **lista de objetos** `PostMoedaRequest`.
 - Retorna essa lista ao **cliente gRPC**.
 
-### `PostCarteira(PostCarteiraRequest request, ServerCallContext context)`
+#### `PostCarteira(PostCarteiraRequest request, ServerCallContext context)`
 
 - Cria uma **nova carteira** vinculada a um usuário.
 - Transforma o valor recebido (`QtdMoedas`) para **decimal** e define um **statusConta** (`Positivo` ou `Neutro`).
